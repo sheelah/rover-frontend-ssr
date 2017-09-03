@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React, {Component} from 'react';
 import config from '../config';
-import getResults from '../api';
+import getResults from '../lib/api';
 import Header from '../components/Header';
-import helpers from '../helpers';
+import helpers from '../lib/helpers';
 import ResultsList from '../components/ResultsList';
 
 class App extends Component {
