@@ -4,6 +4,7 @@ import config from '../config';
 import getResults from '../api';
 import Header from '../components/Header';
 import helpers from '../helpers';
+import ResultsList from '../components/ResultsList';
 
 class App extends Component {
   static async getInitialProps() {
@@ -18,7 +19,7 @@ class App extends Component {
 
     const results = await getResults(config.rover_api_url, params);
     return {
-      results: results.results,
+      results: results,
       haveSearched: true,
       startDate: startDate,
       endDate: endDate,
@@ -37,8 +38,11 @@ class App extends Component {
             name='viewport'
             content='initial-scale=1.0, width=device-width' />
         </Head>
-
         <Header />
+         <ResultsList
+          results={this.props.results}
+          haveSearched={this.props.haveSearched}
+        />
       </div>
     );
   }
