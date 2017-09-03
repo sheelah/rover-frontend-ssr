@@ -1,0 +1,22 @@
+{
+  "name": "rover-frontend-ssr",
+  "version": "1.0.0",
+  "description": "Server-side rendered-enabled React app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Sheelah Brennan",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "next": "^3.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^0.4.0"
+  }
+}
