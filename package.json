@@ -11,10 +11,13 @@
   "author": "Sheelah Brennan",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-inline-import": "^2.0.6",
     "babel-preset-stage-0": "^6.24.1",
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.18.1",
     "next": "^3.2.1",
     "react": "^15.6.1",
+    "react-datepicker": "^0.53.0",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
