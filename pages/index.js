@@ -27,10 +27,10 @@ class App extends Component {
     this.state = {
       results: props.results,
       haveSearched: props.haveSearched,
-      startDate: helpers.getTomorrow(),
-      endDate: helpers.get7DaysFromTomorrow(),
-      minPrice: '20',
-      maxPrice: '100',
+      startDate: null,
+      endDate: null,
+      minPrice: '',
+      maxPrice: ''
     };
     this.handleDateFilterStart = this.handleDateFilterStart.bind(this);
     this.handleDateFilterEnd = this.handleDateFilterEnd.bind(this);
@@ -62,7 +62,7 @@ class App extends Component {
     const dateOptions = helpers.parseDateOptions(startDate, endDate);
     const priceOptions = helpers.parsePriceOptions(minPrice, maxPrice);
 
-    const params = helpers.getCustomQueryParams(dateOptions, priceOptions);
+    const params = helpers.getFullQueryParams(dateOptions, priceOptions);
     const encodedParams = helpers.uriEncodeParams(params);
 
     const results = await getResults(config.rover_api_url, encodedParams);
