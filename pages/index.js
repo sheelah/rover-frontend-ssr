@@ -2,33 +2,79 @@ import Head from 'next/head';
 import React, {Component} from 'react';
 import config from '../config';
 import getResults from '../lib/api';
+import FilterableForm from '../components/FilterableForm';
 import Header from '../components/Header';
 import helpers from '../lib/helpers';
 import ResultsList from '../components/ResultsList';
 
 class App extends Component {
   static async getInitialProps() {
-    const startDate = helpers.getTomorrow();
-    const endDate = helpers.get7DaysFromTomorrow();
-    const dateOptions = helpers.parseDateOptions(startDate, endDate);
-    const minPrice = '20';
-    const maxPrice = '100';
-    const priceOptions = helpers.parsePriceOptions(minPrice, maxPrice);
+    // Set up initial data in prep for server-side rendering
     const haveSearched = false;
-    const params = helpers.setQueryParams(dateOptions, priceOptions);
+    const params = helpers.uriEncodeParams(helpers.getBaseQueryParams());
 
     const results = await getResults(config.rover_api_url, params);
     return {
       results: results,
-      haveSearched: true,
-      startDate: startDate,
-      endDate: endDate,
-      minPrice: minPrice,
-      maxPrice: maxPrice
+      haveSearched: true
     };
   }
 
+  constructor(props) {
+    super(props);
+
+    // Populate initial state based on props
+    this.state = {
+      results: props.results,
+      haveSearched: props.haveSearched,
+      startDate: helpers.getTomorrow(),
+      endDate: helpers.get7DaysFromTomorrow(),
+      minPrice: '20',
+      maxPrice: '100',
+    };
+    this.handleDateFilterStart = this.handleDateFilterStart.bind(this);
+    this.handleDateFilterEnd = this.handleDateFilterEnd.bind(this);
+    this.handlePriceFilterMin = this.handlePriceFilterMin.bind(this);
+    this.handlePriceFilterMax = this.handlePriceFilterMax.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleDateFilterStart(startDate) {
+    this.setState({ startDate });
+  }
+
+  handleDateFilterEnd(endDate) {
+    this.setState({ endDate });
+  }
+
+  handlePriceFilterMin(minPrice) {
+    this.setState({ minPrice });
+  }
+
+  handlePriceFilterMax(maxPrice) {
+    this.setState({ maxPrice });
+  }
+
+  async handleSearch() {
+    const { startDate, endDate, minPrice, maxPrice } = this.state;
+
+    // Prep query params for API search based on filters
+    const dateOptions = helpers.parseDateOptions(startDate, endDate);
+    const priceOptions = helpers.parsePriceOptions(minPrice, maxPrice);
+
+    const params = helpers.getCustomQueryParams(dateOptions, priceOptions);
+    const encodedParams = helpers.uriEncodeParams(params);
+
+    const results = await getResults(config.rover_api_url, encodedParams);
+    this.setState({
+      results: results,
+      haveSearched: true
+    });
+  }
+
   render() {
+    const { startDate, endDate, minPrice, maxPrice } = this.state;
+    const { results, haveSearched } = this.state;
     return (
       <div className='content'>
         <Head>
@@ -39,9 +85,20 @@ class App extends Component {
             content='initial-scale=1.0, width=device-width' />
         </Head>
         <Header />
-         <ResultsList
-          results={this.props.results}
-          haveSearched={this.props.haveSearched}
+        <FilterableForm
+          startDate={startDate}
+          endDate={endDate}
+          handleDateFilterStart={this.handleDateFilterStart}
+          handleDateFilterEnd={this.handleDateFilterEnd}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          handlePriceFilterMin={this.handlePriceFilterMin}
+          handlePriceFilterMax={this.handlePriceFilterMax}
+          handleSearch={this.handleSearch}
+        />
+        <ResultsList
+          results={results}
+          haveSearched={haveSearched}
         />
       </div>
     );
