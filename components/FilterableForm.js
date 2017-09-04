@@ -17,7 +17,7 @@ class FilterableForm extends Component {
   render() {
     return (
       <section className='search-container'>
-        <h2>Overnight Boarding Options</h2>
+        <h2>Overnight Boarding</h2>
         <form className='search-form' onSubmit={this.handleSubmit}>
           <FilterByDate
             startDate={this.props.startDate}

@@ -79,20 +79,20 @@ class App extends Component {
     return (
       <div>
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+        <Head>
+          <title>Rover - Home</title>
+          <meta charSet='utf-8' />
+          <meta
+            name='viewport'
+            content='initial-scale=1.0, width=device-width'
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Lato:400,700"
+            rel="stylesheet"
+          />
+        </Head>
+        <Header />
         <div className='content'>
-          <Head>
-            <title>Rover - Home</title>
-            <meta charSet='utf-8' />
-            <meta
-              name='viewport'
-              content='initial-scale=1.0, width=device-width'
-            />
-            <link
-              href="https://fonts.googleapis.com/css?family=Lato:400,700"
-              rel="stylesheet"
-            />
-          </Head>
-          <Header />
           <FilterableForm
             startDate={startDate}
             endDate={endDate}

@@ -9,7 +9,7 @@ class ResultsList extends Component {
     if (haveSearched && results.length  === 0) {
       // No matches were found
       return (
-        <main>
+        <main className='search-results'>
           <p className="error--no-results">
             Sorry - no matches were found! Try changing your search options.
           </p>
@@ -18,8 +18,8 @@ class ResultsList extends Component {
     }
 
     return (
-      <main>
-        <ul className='search-results'>
+      <main className='search-results'>
+        <ul className='search-results__list'>
           {results.map(item => {
             return <ResultsListItem key={item.person_opk}
               person={item} />;

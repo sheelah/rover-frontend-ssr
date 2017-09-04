@@ -6,7 +6,6 @@ const Header = () => {
   return (
     <header className="global-header">
       <Logo />
-      <h1>Find an Overnight Dog Sitter</h1>
     </header>
   );
 };
