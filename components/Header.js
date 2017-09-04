@@ -5,7 +5,9 @@ import Logo from './Logo';
 const Header = () => {
   return (
     <header className="global-header">
-      <Logo />
+      <div className='wrapper'>
+        <Logo />
+      </div>
     </header>
   );
 };

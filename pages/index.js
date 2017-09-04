@@ -27,6 +27,7 @@ class App extends Component {
     // Populate initial state based on props
     this.state = {
       results: props.results,
+      isLoading: false,
       haveSearched: props.haveSearched,
       startDate: null,
       endDate: null,
@@ -58,6 +59,10 @@ class App extends Component {
 
   async handleSearch() {
     const { startDate, endDate, minPrice, maxPrice } = this.state;
+    this.setState({
+      results: [],
+      isLoading: true
+    });
 
     // Prep query params for API search based on filters
     const dateOptions = helpers.parseDateOptions(startDate, endDate);
@@ -69,13 +74,14 @@ class App extends Component {
     const results = await getResults(config.rover_api_url, encodedParams);
     this.setState({
       results: results,
+      isLoading: false,
       haveSearched: true
     });
   }
 
   render() {
     const { startDate, endDate, minPrice, maxPrice } = this.state;
-    const { results, haveSearched } = this.state;
+    const { results, isLoading, haveSearched } = this.state;
     return (
       <div>
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
@@ -87,7 +93,7 @@ class App extends Component {
             content='initial-scale=1.0, width=device-width'
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Lato:400,700"
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
             rel="stylesheet"
           />
         </Head>
@@ -106,6 +112,7 @@ class App extends Component {
           />
           <ResultsList
             results={results}
+            isLoading={isLoading}
             haveSearched={haveSearched}
           />
         </div>

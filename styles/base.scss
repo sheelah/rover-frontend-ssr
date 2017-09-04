@@ -17,7 +17,12 @@ body {
 body {
   color: $primary-color;
   font-family: 'Lato', Arial, sans-serif;
+
+  @media only screen and (min-width: 800px) {
+    background: linear-gradient(to right,#95c194 0%,#78a064 49%,#5e7b49 100%);
+  }
 }
+
 
 img {
   display: block;
@@ -28,14 +33,18 @@ p {
   line-height: 1.4;
 }
 
-.global-header {
-  overflow: hidden;
-  border-bottom: 1px $header-border-color;
-  padding: 0.3em;
+.wrapper {
   @media only screen and (min-width: 800px) {
     margin: 0 auto;
     max-width: 1200px;
   }
+}
+
+.global-header {
+  background: $white;
+  border-bottom: 1px $header-border-color;
+  overflow: hidden;
+  padding: 0.3em;
 
   .rover-logo {
     width: 120px;
@@ -49,16 +58,19 @@ p {
   max-width: 100%;
   @media only screen and (min-width: 800px) {
     display: flex;
-    margin: 0 auto;
+    margin: 2em auto;
     max-width: 1200px;
   }
 }
 
 .search-container {
   background: $form-background-color;
-  padding: 1em;
+  padding: 1em 2em;
   @media only screen and (min-width: 800px) {
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     flex: 0 0 300px;
+    max-height: 500px;
   }
 }
 
@@ -69,15 +81,22 @@ p {
 }
 
 .search-results {
-  padding: 0 1em;
+  background: $white;
+  margin-top: 2em;
+
   @media only screen and (min-width: 800px) {
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     flex: 1 0 500px;
+    margin: 0 0 0 3em;
+    padding: 2.5em 1em;
   }
 }
 
 .search-results__list {
   margin: 0;
   padding: 0;
+
   @media only screen and (min-width: 800px) {
     padding-left: 3em;
   }
@@ -85,25 +104,42 @@ p {
   li {
     display: flex;
     list-style: none;
-    margin-bottom: 2em;
+    margin-bottom: 2.5em;
   }
 
   span {
     display: block;
-    margin-bottom: 0.4em;
+  }
+}
+
+.person__image {
+  display: block;
+  max-width: 100px;
+  width: auto;
+
+  @media only screen and (min-width: 800px) {
+    max-width: 140px;
   }
 }
 
 .person__details {
   color: $details-color;
   padding: 0 1em;
+  position: relative;
+}
+
+.person__location {
+  font-weight: 300;
+  margin-bottom: 0.6em;
 }
 
 .person__name {
   color: $primary-color;
   font-size: 1.6em;
+  margin-bottom: 0;
 }
 
 .person__price {
-  margin-top: 2em;
+  position: absolute;
+  bottom: 0px;
 }

@@ -4,27 +4,41 @@ import ResultsListItem from './ResultsListItem';
 
 class ResultsList extends Component {
   render() {
-    const { results, haveSearched } = this.props;
+    const { results, isLoading, haveSearched } = this.props;
 
-    if (haveSearched && results.length  === 0) {
+    if (isLoading) {
+      return (
+        <main className='search-results'>
+          <div className='wrapper'>
+            <p>Loading...</p>
+          </div>
+        </main>
+      );
+    }
+
+    if (!isLoading && haveSearched && results.length  === 0) {
       // No matches were found
       return (
         <main className='search-results'>
-          <p className="error--no-results">
-            Sorry - no matches were found! Try changing your search options.
-          </p>
+          <div className='wrapper'>
+            <p className="error--no-results">
+              Sorry - no matches were found! Try changing your search options.
+            </p>
+          </div>
         </main>
       );
     }
 
     return (
       <main className='search-results'>
-        <ul className='search-results__list'>
-          {results.map(item => {
-            return <ResultsListItem key={item.person_opk}
-              person={item} />;
-          })}
-        </ul>
+        <div className='wrapper'>
+          <ul className='search-results__list'>
+            {results.map(item => {
+              return <ResultsListItem key={item.person_opk}
+                person={item} />;
+            })}
+          </ul>
+        </div>
       </main>
     );
   }
@@ -32,6 +46,7 @@ class ResultsList extends Component {
 
 ResultsList.propTypes = {
   results: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   haveSearched: PropTypes.bool.isRequired
 };
 
