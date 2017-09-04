@@ -20,7 +20,9 @@ const ResultsListItem = ({ person }) => {
         <span className='person__rating'>
           Average rating: {person.ratings_average}
         </span>
-        <span className='person__price'>${person.price}/night</span>
+        <span className='person__price'>
+          <span className='person__price--dollars'>${person.price}</span>
+        /night</span>
       </div>
     </li>
   );

@@ -40,6 +40,13 @@ p {
   }
 }
 
+.wrapper--icon {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+}
+
 .global-header {
   background: $white;
   border-bottom: 1px $header-border-color;
@@ -51,6 +58,11 @@ p {
     height: auto;
     max-width: 100%;
   }
+}
+
+.icon--loading {
+  display: block;
+  margin: 0 auto;
 }
 
 .content {
@@ -66,9 +78,10 @@ p {
 .search-container {
   background: $form-background-color;
   padding: 1em 2em;
+
   @media only screen and (min-width: 800px) {
     border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    box-shadow: $shadow;
     flex: 0 0 300px;
     max-height: 500px;
   }
@@ -86,7 +99,7 @@ p {
 
   @media only screen and (min-width: 800px) {
     border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    box-shadow: $shadow;
     flex: 1 0 500px;
     margin: 0 0 0 3em;
     padding: 2.5em 1em;
@@ -126,6 +139,7 @@ p {
   color: $details-color;
   padding: 0 1em;
   position: relative;
+  text-transform: capitalize;
 }
 
 .person__location {
@@ -134,12 +148,34 @@ p {
 }
 
 .person__name {
-  color: $primary-color;
-  font-size: 1.6em;
+  font-size: 1.4em;
   margin-bottom: 0;
+
+  @media only screen and (min-width: 800px) {
+    font-size: 1.6em;
+  }
+}
+
+.person__brief {
+  margin-bottom: 0.2em;
 }
 
 .person__price {
-  position: absolute;
-  bottom: 0px;
+  margin-top: 1em;
+  display: inline;
+
+  @media only screen and (min-width: 800px) {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .person__price--dollars {
+    display: inline;
+    font-size: 1.2em;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 1.3em;
+    }
+  }
 }

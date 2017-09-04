@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading.js';
 import ResultsListItem from './ResultsListItem';
 
 class ResultsList extends Component {
@@ -9,8 +10,8 @@ class ResultsList extends Component {
     if (isLoading) {
       return (
         <main className='search-results'>
-          <div className='wrapper'>
-            <p>Loading...</p>
+          <div className='wrapper wrapper--icon'>
+            <Loading />
           </div>
         </main>
       );
