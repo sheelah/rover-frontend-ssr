@@ -6,6 +6,7 @@ import FilterableForm from '../components/FilterableForm';
 import Header from '../components/Header';
 import helpers from '../lib/helpers';
 import ResultsList from '../components/ResultsList';
+import stylesheet from 'styles/base.scss';
 
 class App extends Component {
   static async getInitialProps() {
@@ -76,30 +77,38 @@ class App extends Component {
     const { startDate, endDate, minPrice, maxPrice } = this.state;
     const { results, haveSearched } = this.state;
     return (
-      <div className='content'>
-        <Head>
-          <title>Rover - Home</title>
-          <meta charSet='utf-8' />
-          <meta
-            name='viewport'
-            content='initial-scale=1.0, width=device-width' />
-        </Head>
-        <Header />
-        <FilterableForm
-          startDate={startDate}
-          endDate={endDate}
-          handleDateFilterStart={this.handleDateFilterStart}
-          handleDateFilterEnd={this.handleDateFilterEnd}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          handlePriceFilterMin={this.handlePriceFilterMin}
-          handlePriceFilterMax={this.handlePriceFilterMax}
-          handleSearch={this.handleSearch}
-        />
-        <ResultsList
-          results={results}
-          haveSearched={haveSearched}
-        />
+      <div>
+        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+        <div className='content'>
+          <Head>
+            <title>Rover - Home</title>
+            <meta charSet='utf-8' />
+            <meta
+              name='viewport'
+              content='initial-scale=1.0, width=device-width'
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Lato:400,700"
+              rel="stylesheet"
+            />
+          </Head>
+          <Header />
+          <FilterableForm
+            startDate={startDate}
+            endDate={endDate}
+            handleDateFilterStart={this.handleDateFilterStart}
+            handleDateFilterEnd={this.handleDateFilterEnd}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            handlePriceFilterMin={this.handlePriceFilterMin}
+            handlePriceFilterMax={this.handlePriceFilterMax}
+            handleSearch={this.handleSearch}
+          />
+          <ResultsList
+            results={results}
+            haveSearched={haveSearched}
+          />
+        </div>
       </div>
     );
   }

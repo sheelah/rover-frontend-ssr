@@ -1,0 +1,14 @@
+@import 'normalize.css';
+
+$primary-color: #333;
+$error-color: #ff5252;
+
+body {
+  color: $primary-color;
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.global-header svg {
+  width: 120px;
+  height: auto;
+}
