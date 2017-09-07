@@ -9,3 +9,9 @@ it('Renders header with correct class', () => {
   );
   expect(component.find('header').hasClass('global-header')).toEqual(true);
 });
+
+it('Renders correct header markup', () => {
+  const component = renderer.create(<Header />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
