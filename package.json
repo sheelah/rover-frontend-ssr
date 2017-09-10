@@ -12,6 +12,7 @@
   "author": "Sheelah Brennan",
   "license": "ISC",
   "jest": {
+    "testPathIgnorePatterns":["__snapshots__"],
     "testEnvironment": "node",
     "roots": [
       "test/"
