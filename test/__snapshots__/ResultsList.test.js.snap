@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No results Renders correct results list markup 1`] = `
+<main
+  className="search-results"
+>
+  <div
+    className="wrapper wrapper--icon"
+  >
+    <svg
+      className="icon--loading"
+      height="40"
+      viewBox="0 0 40 40"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M20.201 5.169c-8.254 0-14.946 6.692-14.946 14.946 0 8.255 6.692 14.946 14.946 14.946s14.946-6.691 14.946-14.946c-.001-8.254-6.692-14.946-14.946-14.946zm0 26.58c-6.425 0-11.634-5.208-11.634-11.634 0-6.425 5.209-11.634 11.634-11.634 6.425 0 11.633 5.209 11.633 11.634 0 6.426-5.208 11.634-11.633 11.634z"
+        opacity=".2"
+      />
+      <path
+        d="M15.447 30.7l-1.235 3.07a14.855 14.855 0 0 0 7.675.942l-.466-3.28a11.57 11.57 0 0 1-5.974-.732z"
+      >
+        <animateTransform
+          attributeName="transform"
+          attributeType="xml"
+          dur="0.7s"
+          from="0 20 20"
+          repeatCount="indefinite"
+          to="360 20 20"
+          type="rotate"
+        />
+      </path>
+    </svg>
+  </div>
+</main>
+`;
