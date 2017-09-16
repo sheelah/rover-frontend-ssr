@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const ResultsListItem = ({ person }) => {
   const personDetails = person.person_summary;
+  const profileUrl = personDetails.url;
 
   return (
     <li>
-      <a href={personDetails.web_url}>
-        <img
-          src={personDetails.default_image.small}
-          alt={person.person_name}
-          className='person__image'
-        />
-      </a>
+      <Link href={{ pathname: '/profile', query: { id: person.person_opk }}}>
+        <a>
+          <img
+            src={personDetails.default_image.small}
+            alt={person.person_name}
+            className='person__image'
+          />
+        </a>
+      </Link>
       <div className='person__details'>
         <span className='person__name'>{person.person_name}</span>
         <span className='person__location'>{person.city}</span>

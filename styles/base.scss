@@ -179,3 +179,23 @@ p {
     }
   }
 }
+
+.sitter-profile {
+  background: $white;
+  margin-top: 2em;
+
+  @media only screen and (min-width: 800px) {
+    border-radius: 3px;
+    box-shadow: $shadow;
+    flex: 1 0 500px;
+    padding: 2.5em 1em;
+  }
+}
+
+.sitter-profile__image {
+  margin-bottom: 1em;
+}
+
+.sitter-profile__reviews {
+  font-size: 1.1em;
+}

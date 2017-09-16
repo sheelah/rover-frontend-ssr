@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, {Component} from 'react';
 import config from '../config';
-import getResults from '../lib/api';
+import { getResults } from '../lib/api';
 import FilterableForm from '../components/FilterableForm';
 import Header from '../components/Header';
 import helpers from '../lib/helpers';
@@ -14,7 +14,7 @@ class App extends Component {
     const haveSearched = false;
     const params = helpers.uriEncodeParams(helpers.getBaseQueryParams());
 
-    const results = await getResults(config.rover_api_url, params);
+    const results = await getResults(config.rover_search_url, params);
     return {
       results: results,
       haveSearched: true
@@ -71,7 +71,7 @@ class App extends Component {
     const params = helpers.getFullQueryParams(dateOptions, priceOptions);
     const encodedParams = helpers.uriEncodeParams(params);
 
-    const results = await getResults(config.rover_api_url, encodedParams);
+    const results = await getResults(config.rover_search_url, encodedParams);
     this.setState({
       results: results,
       isLoading: false,
