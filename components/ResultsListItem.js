@@ -5,10 +5,13 @@ import Link from 'next/link';
 const ResultsListItem = ({ person }) => {
   const personDetails = person.person_summary;
   const profileUrl = personDetails.url;
+  const firstName = personDetails.first_name.trim().toLowerCase();
 
   return (
     <li>
-      <Link href={{ pathname: '/profile', query: { id: person.person_opk }}}>
+      <Link
+        href={`/profile?id=${person.person_opk}`}
+        as={`/profile/${firstName}`}>
         <a>
           <img
             src={personDetails.default_image.small}
