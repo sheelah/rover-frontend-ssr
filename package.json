@@ -4,15 +4,17 @@
   "description": "Server-side rendered-enabled React app",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "test": "jest"
   },
   "author": "Sheelah Brennan",
   "license": "ISC",
   "jest": {
-    "testPathIgnorePatterns":["__snapshots__"],
+    "testPathIgnorePatterns": [
+      "__snapshots__"
+    ],
     "testEnvironment": "node",
     "roots": [
       "test/"
@@ -26,6 +28,7 @@
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
+    "express": "^4.15.4",
     "glob": "^7.1.2",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.18.1",

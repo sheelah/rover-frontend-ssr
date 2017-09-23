@@ -11,7 +11,8 @@ const ResultsListItem = ({ person }) => {
     <li>
       <Link
         href={`/profile?id=${person.person_opk}`}
-        as={`/profile/${firstName}`}>
+        as={`/profile/${person.person_opk}`}
+        prefetch>
         <a>
           <img
             src={personDetails.default_image.small}
@@ -29,7 +30,7 @@ const ResultsListItem = ({ person }) => {
         </span>
         <span className='person__price'>
           <span className='person__price--dollars'>${person.price}</span>
-        /night</span>
+          /night</span>
       </div>
     </li>
   );
