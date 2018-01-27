@@ -38,9 +38,9 @@
     "postcss-easy-import": "^2.1.0",
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
-    "react": "^15.6.1",
+    "react": "^16.2.0",
     "react-datepicker": "^0.53.0",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.2.0",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {
